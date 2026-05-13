@@ -3,7 +3,7 @@ import Login from "./pages/Auth/Login";
 import SignUp from "./pages/Auth/SignUp";
 import Home from "./pages/Dashboard/Home";
 import Income from "./pages/Dashboard/Income";
-import Expence from "./pages/Dashboard/Expence";
+import Expense from "./pages/Dashboard/Expense";
 import UserProvider from "./context/UserContext";
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/dashboard" element={<Home />} />
             <Route path="/income" element={<Income />} />
-            <Route path="/expence" element={<Expence />} />
+            <Route path="/expense" element={<Expense />} />
           </Routes>
         </BrowserRouter>
       </div>

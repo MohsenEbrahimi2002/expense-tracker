@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { SIDE_MENU_DATA } from "../../utils/data";
 import { UserContext, type UserContextType } from "../../context/UserContext";
 import { useNavigate } from "react-router";
@@ -26,7 +26,7 @@ function SideMenu({ activeMenu }: SideMenuProps) {
   };
   return (
     <div className="w-64 h-[calc(100vh-61px)] bg-white border">
-      <div className="flex flex-col items-center justify-center gap-4 p-4 border-b">
+      <div className="flex flex-col items-center justify-center gap-3 mt-3 border-b">
         {user?.profileImageUrl ? (
           <img
             src={user.profileImageUrl}
@@ -34,7 +34,7 @@ function SideMenu({ activeMenu }: SideMenuProps) {
             className="w-20 h-20 bg-slate-400 rounded-full object-cover"
           />
         ) : (
-          <div className="w-20 h-20 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center">
+          <div className="w-20 h-20 bg-linear-to-r from-indigo-500 to-purple-500 rounded-full flex items-center justify-center">
             <span className="text-white text-2xl font-semibold">
               {user?.fullName?.charAt(0) || "U"}
             </span>
@@ -42,7 +42,7 @@ function SideMenu({ activeMenu }: SideMenuProps) {
         )}
         <div className="text-center">
           <h5 className="text-gray-950 font-medium leading-6">
-            {user?.fullName || "کاربر مهمان"}
+            {user?.fullName || "guest user"}
           </h5>
           <p className="text-gray-500 text-sm">{user?.email || ""}</p>
         </div>
