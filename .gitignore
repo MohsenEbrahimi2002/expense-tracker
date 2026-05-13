@@ -1,0 +1,133 @@
+# Dependencies
+node_modules/
+/client/node_modules/
+/server/node_modules/
+package-lock.json
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+/server/.env
+/client/.env
+
+# Vite build output
+/dist
+/client/dist
+/server/dist
+build/
+/client/build
+
+# Vite cache
+.vite
+.client/.vite
+/server/.vite
+*.timestamp-*
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# Testing
+/coverage
+.nyc_output
+.eslintcache
+
+# Debug
+*.pid
+*.seed
+*.pid.lock
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# npm
+.npm
+.node_repl_history
+
+# Yarn
+.yarn-integrity
+.yarn/cache/
+.yarn/unplugged/
+
+# React / Vite specific
+.eslintcache
+*.tsbuildinfo
+
+# MongoDB Compass exports (اضافه شده مخصوص Compass)
+mongodb-compass-export/
+*.mongodb-compass
+*.json.backup
+*.bson
+dump/
+mongodb-data/
+*.mongodb
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Build tools
+*.tgz
+*.tar.gz
+*.rar
+
+# Environment specific
+*.local
+*.development
+*.production
+
+# Backend
+backend/node_modules/
+backend/.env
+backend/dist/
+backend/*.log
+
+# Frontend (Vite)
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/*.local
+
+# Shared
+node_modules/
+.DS_Store
+*.log
+logs/
+
+# MongoDB Compass
+dump/
+mongodb-data/
+*.mongodb
+
+# IDE
+.vscode/
+.idea/
