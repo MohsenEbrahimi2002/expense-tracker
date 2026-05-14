@@ -10,7 +10,7 @@ function Navbar({ activeMenu }: NavbarProps) {
   const [openSideMenu, setOpenSideMenu] = useState<boolean>(false);
 
   return (
-    <div className="flex gap-5 bg-white border bordered-b border-gray-200/50 backdrop-blur-xs py-4 px-7 sticky top-0 z-30">
+    <div className="flex gap-5 bg-white border bordere-b border-gray-200/50 backdrop-blur-xs py-4 px-7 sticky top-0 z-30">
       <button
         className="block lg:hidden text-black"
         onClick={() => setOpenSideMenu(!openSideMenu)}

@@ -25,8 +25,8 @@ function SideMenu({ activeMenu }: SideMenuProps) {
     navigate("/login");
   };
   return (
-    <div className="w-64 h-[calc(100vh-61px)] bg-white border border-slate-400/20">
-      <div className="flex flex-col items-center justify-center gap-3 mt-3 border-b border-slate-400/20">
+    <div className="w-64 h-[calc(100vh-61px)] bg-white border border-gray-200/50">
+      <div className="flex flex-col items-center justify-center gap-3 mt-3 border-b border-gray-200/50">
         {user?.profileImageUrl ? (
           <img
             src={user.profileImageUrl}
@@ -53,7 +53,7 @@ function SideMenu({ activeMenu }: SideMenuProps) {
           <button
             key={item.id || index}
             className={`
-            w-full flex items-center gap-4 text-[15px] py-3 px-6 rounded-lg mb-3 transition-all duration-200
+            w-full flex items-center gap-4 text-[15px] py-3 px-6 rounded-lg mb-3 transition-all duration-200 cursor-pointer
             ${
               activeMenu === item.label
                 ? "bg-primary text-white shadow-md"
