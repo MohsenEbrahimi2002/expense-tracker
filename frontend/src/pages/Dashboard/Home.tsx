@@ -4,13 +4,22 @@ import { useUserAuth } from "../../hooks/useUserAuth";
 import { useEffect, useState } from "react";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPath";
+import { LuHandCoins, LuWalletMinimal } from "react-icons/lu";
+import { IoMdCard } from "react-icons/io";
+import type { DashboardDataType } from "../../utils/types";
+import { addThousandsSeparator } from "../../utils/helper";
+import InfoCard from "../../components/Cards/InfoCard";
+
+
 
 function Home() {
   useUserAuth();
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
-  const [dashboardData, setDashboardData] = useState(null);
+  const [dashboardData, setDashboardData] = useState<DashboardDataType | null>(
+    null,
+  );
 
   const fetchDashboardData = async () => {
     if (loading) return;
@@ -25,7 +34,7 @@ function Home() {
     } catch (error) {
       console.log("Something went wrong. Please try again", error);
     } finally {
-      setLoading(true);
+      setLoading(false);
     }
   };
   useEffect(() => {
@@ -35,7 +44,16 @@ function Home() {
 
   return (
     <DashboardLayout activeMenu="Dashboard">
-      <div className="my-5 mx-auto">Home</div>
+      <div className="my-5 mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <InfoCard
+            icon={<IoMdCard />}
+            label="Total Balance"
+            value={addThousandsSeparator(dashboardData?.totalBalance)}
+            color="bg-primary"
+          />
+        </div>
+      </div>
     </DashboardLayout>
   );
 }
