@@ -25,8 +25,8 @@ function SideMenu({ activeMenu }: SideMenuProps) {
     navigate("/login");
   };
   return (
-    <div className="w-64 h-[calc(100vh-61px)] bg-white border">
-      <div className="flex flex-col items-center justify-center gap-3 mt-3 border-b">
+    <div className="w-64 h-[calc(100vh-61px)] bg-white border border-slate-400/20">
+      <div className="flex flex-col items-center justify-center gap-3 mt-3 border-b border-slate-400/20">
         {user?.profileImageUrl ? (
           <img
             src={user.profileImageUrl}
@@ -40,7 +40,7 @@ function SideMenu({ activeMenu }: SideMenuProps) {
             </span>
           </div>
         )}
-        <div className="text-center">
+        <div className="text-center mb-4">
           <h5 className="text-gray-950 font-medium leading-6">
             {user?.fullName || "guest user"}
           </h5>
@@ -57,7 +57,7 @@ function SideMenu({ activeMenu }: SideMenuProps) {
             ${
               activeMenu === item.label
                 ? "bg-primary text-white shadow-md"
-                : "bg-gray-50 text-gray-700 hover:bg-gray-100"
+                : "bg-gray-100 text-gray-700 hover:bg-gray-300"
             }
           `}
             onClick={() => handleClick(item.path)}
