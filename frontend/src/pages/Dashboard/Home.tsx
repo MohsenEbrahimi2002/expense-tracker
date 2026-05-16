@@ -10,6 +10,7 @@ import type { DashboardDataType } from "../../utils/types";
 import { addThousandsSeparator } from "../../utils/helper";
 import InfoCard from "../../components/Cards/InfoCard";
 import RecentTransactions from "../../components/Dashboard/RecentTransactions";
+import FinanceOverview from "../../components/Dashboard/FinanceOverview";
 
 function Home() {
   useUserAuth();
@@ -70,6 +71,10 @@ function Home() {
             onSeeMore={() => navigate("/expense")}
           />
         </div>
+        <FinanceOverview
+        totalBalance={dashboardData?.totalBalance || 0}
+        totalIncome={dashboardData?.totalIncome || 0}
+        totalExpense={dashboardData?.totalExpense || 0} />
       </div>
     </DashboardLayout>
   );
