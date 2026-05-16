@@ -1,3 +1,5 @@
+import CustomPieChart from "../Charts/CustomPieChart";
+
 type FinanceOverviewProps = {
   totalBalance: number;
   totalIncome: number;
