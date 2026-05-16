@@ -10,8 +10,6 @@ import type { DashboardDataType } from "../../utils/types";
 import { addThousandsSeparator } from "../../utils/helper";
 import InfoCard from "../../components/Cards/InfoCard";
 
-
-
 function Home() {
   useUserAuth();
   const navigate = useNavigate();
@@ -51,6 +49,18 @@ function Home() {
             label="Total Balance"
             value={addThousandsSeparator(dashboardData?.totalBalance)}
             color="bg-primary"
+          />
+          <InfoCard
+            icon={<LuWalletMinimal />}
+            label="Total Income"
+            value={addThousandsSeparator(dashboardData?.totalIncome)}
+            color="bg-orange-500"
+          />
+          <InfoCard
+            icon={<LuHandCoins />}
+            label="Total Expense"
+            value={addThousandsSeparator(dashboardData?.totalExpense)}
+            color="bg-red-500"
           />
         </div>
       </div>
