@@ -14,7 +14,7 @@ function RecentTransactions({
     <div className="card">
       <div className="flex items-center justify-between">
         <h5 className="text-lg">Recent Transactions</h5>
-        <button className="card-bin" onClick={onSeeMore}>
+        <button className="card-btn" onClick={onSeeMore}>
           See all <LuArrowRight className="text-base" />
         </button>
       </div>
