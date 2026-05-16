@@ -1,6 +1,15 @@
+interface CustomTooltipProps {
+  active?: boolean;
+  payload?: Array<{
+    name: string;
+    value: string | number;
+    color?: string;
+    dataKey?: string | number;
+  }>;
+}
 
 
-function CustomTooltip({active,payload}: any) {
+function CustomTooltip({ active, payload }: CustomTooltipProps ) {
   if (active && payload && payload.length) {
     return (
       <div className="bg-white shadow-md rounded-lg p-2 border">
