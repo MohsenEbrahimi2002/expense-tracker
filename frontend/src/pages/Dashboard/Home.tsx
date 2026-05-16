@@ -11,6 +11,7 @@ import { addThousandsSeparator } from "../../utils/helper";
 import InfoCard from "../../components/Cards/InfoCard";
 import RecentTransactions from "../../components/Dashboard/RecentTransactions";
 import FinanceOverview from "../../components/Dashboard/FinanceOverview";
+import ExpenseTransaction from "../../components/Dashboard/ExpenseTransaction";
 
 function Home() {
   useUserAuth();
@@ -70,12 +71,16 @@ function Home() {
             transactions={dashboardData?.recentTransactions}
             onSeeMore={() => navigate("/expense")}
           />
-        <FinanceOverview
-          totalBalance={dashboardData?.totalBalance || 0}
-          totalIncome={dashboardData?.totalIncome || 0}
-          totalExpense={dashboardData?.totalExpense || 0}
+          <FinanceOverview
+            totalBalance={dashboardData?.totalBalance || 0}
+            totalIncome={dashboardData?.totalIncome || 0}
+            totalExpense={dashboardData?.totalExpense || 0}
           />
-          </div>
+          <ExpenseTransaction
+            transactions={dashboardData?.last30DaysExpenses.transactions || []}
+            onSeeMore={() => navigate("/expense")}
+          />
+        </div>
       </div>
     </DashboardLayout>
   );

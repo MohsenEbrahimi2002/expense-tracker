@@ -4,7 +4,7 @@ export interface DashboardDataType {
   totalExpense: number;
   last30DaysExpenses: {
     total: number;
-    transactions: ExpenseTransaction[];
+    transactions: ExpenseTransactionType[];
   };
   last60DaysIncome: {
     total: number;
@@ -13,10 +13,11 @@ export interface DashboardDataType {
   recentTransactions: RecentTransaction[];
 }
 
-interface ExpenseTransaction {
+export interface ExpenseTransactionType {
   _id: string;
   amount: number;
   date: string;
+  icon?: string;
   description?: string;
   category?: string;
   type: "expense";
