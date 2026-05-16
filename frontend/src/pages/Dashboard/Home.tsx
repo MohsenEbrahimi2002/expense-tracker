@@ -9,6 +9,7 @@ import { IoMdCard } from "react-icons/io";
 import type { DashboardDataType } from "../../utils/types";
 import { addThousandsSeparator } from "../../utils/helper";
 import InfoCard from "../../components/Cards/InfoCard";
+import RecentTransactions from "../../components/Dashboard/RecentTransactions";
 
 function Home() {
   useUserAuth();
@@ -61,6 +62,12 @@ function Home() {
             label="Total Expense"
             value={addThousandsSeparator(dashboardData?.totalExpense)}
             color="bg-red-500"
+          />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+          <RecentTransactions
+            transactions={dashboardData?.recentTransactions}
+            onSeeMore={() => navigate("/expense")}
           />
         </div>
       </div>

@@ -31,7 +31,7 @@ interface IncomeTransaction {
   type: "income";
 }
 
-interface RecentTransaction {
+export interface RecentTransaction {
   _id: string;
   amount: number;
   date: string;
