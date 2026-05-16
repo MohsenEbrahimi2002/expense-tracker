@@ -37,5 +37,7 @@ export interface RecentTransaction {
   date: string;
   description?: string;
   category?: string;
+  source?: string;
+  icon?: string;
   type: "income" | "expense";
 }
