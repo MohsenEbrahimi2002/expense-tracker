@@ -35,6 +35,5 @@ export const prepareIncomeBarChartData = (data: IncomeType[]) => {
     amount: item.amount,
     source: item.source,
   }));
-
   return chartData;
 };

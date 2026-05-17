@@ -7,7 +7,7 @@ type Last30DaysExpensesProps = {
   data: ExpenseTransactionType[];
 };
 export type ChartDataType = {
-  category: string | undefined;
+  category?: string | undefined;
   amount: number;
 };
 

@@ -10,9 +10,10 @@ import {
   ResponsiveContainer,
   Cell,
 } from "recharts";
+import type { IncomeChartDataType } from "../Income/IncomeOverview";
 
 type CustomBarChartProps = {
-  data: ChartDataType[];
+  data: ChartDataType[] | IncomeChartDataType[];
 };
 
 function CustomBarChart({ data }: CustomBarChartProps) {
@@ -49,13 +50,19 @@ function CustomBarChart({ data }: CustomBarChartProps) {
     }
     return null;
   };
+  const getDataKey = () => {
+    if (data && data.length > 0) {
+      return data[0].hasOwnProperty("source") ? "source" : "category";
+    }
+    return "category";
+  };
   return (
     <div className="bg-white mt-6">
       <ResponsiveContainer width="100%" height={300}>
         <BarChart data={data}>
           <CartesianGrid stroke="none" />
           <XAxis
-            dataKey="category"
+            dataKey={getDataKey()}
             tick={{ fontSize: 12, fill: "#555" }}
             stroke="none"
           />
