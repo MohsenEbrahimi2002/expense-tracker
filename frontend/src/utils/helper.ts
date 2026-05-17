@@ -16,3 +16,9 @@ export const addThousandsSeparator = (num: number | undefined) => {
     : formattedInteger;
 };
 
+export const prepareExpenseBarChartData = (data: ExpenseTransactionType[]) => {
+  const chartData = data.map((item) => ({
+    category: item.category,
+    amount: item.amount,
+  }));
+};
