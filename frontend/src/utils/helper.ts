@@ -1,4 +1,5 @@
-import type { ExpenseTransactionType } from "./types";
+import moment from "moment";
+import type { ExpenseTransactionType, IncomeType } from "./types";
 
 export const validateEmail = (email: string) => {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -21,5 +22,19 @@ export const prepareExpenseBarChartData = (data: ExpenseTransactionType[]) => {
     category: item.category,
     amount: item.amount,
   }));
+  return chartData;
+};
+
+export const prepareIncomeBarChartData = (data: IncomeType[]) => {
+  const sortedData = [...data].sort(
+    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime(),
+  );
+
+  const chartData = sortedData.map((item) => ({
+    month: moment(item.date).format("Do MMM"),
+    amount: item.amount,
+    source: item.source,
+  }));
+
   return chartData;
 };
