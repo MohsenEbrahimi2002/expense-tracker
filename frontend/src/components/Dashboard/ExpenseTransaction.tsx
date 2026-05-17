@@ -12,7 +12,6 @@ function ExpenseTransaction({
   onSeeMore,
   transactions,
 }: ExpenseTransactionProps) {
-  console.log(transactions);
   return (
     <div className="card">
       <div className="flex items-center justify-between">

@@ -19,7 +19,7 @@ function Home() {
 
   const [loading, setLoading] = useState(false);
   const [dashboardData, setDashboardData] = useState<DashboardDataType | null>(
-    null,
+    null
   );
 
   const fetchDashboardData = async () => {
@@ -31,6 +31,7 @@ function Home() {
       );
       if (response.data) {
         setDashboardData(response.data);
+     
       }
     } catch (error) {
       console.log("Something went wrong. Please try again", error);
@@ -80,6 +81,10 @@ function Home() {
             transactions={dashboardData?.last30DaysExpenses.transactions || []}
             onSeeMore={() => navigate("/expense")}
           />
+          <Last30DaysExpenses 
+          data={dashboardData?.last30DaysExpenses.transactions}
+          />
+
         </div>
       </div>
     </DashboardLayout>
