@@ -44,3 +44,15 @@ export interface RecentTransaction {
   icon?: string;
   type: "income" | "expense";
 }
+export interface IncomeType {
+    _id: string;
+    userId: string;
+    icon?: string;
+    source: string;
+    amount: number;
+    date: string;
+    createdAt: string;
+    updatedAt: string;
+    __v?: number;
+}
+
