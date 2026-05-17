@@ -1,4 +1,4 @@
-interface CustomTooltipProps {
+ interface CustomTooltipProps {
   active?: boolean;
   payload?: Array<{
     name: string;
