@@ -66,8 +66,8 @@ function CustomBarChart({ data }: CustomBarChartProps) {
             fill="#FF8042"
             activeBar={{
               fill: "green",
-              stroke: "#yellow",
-              strokeWidth: 2,
+              stroke: "yellow",
+              strokeWidth: 1,
             }}
             radius={[10, 10, 0, 0]}
           >

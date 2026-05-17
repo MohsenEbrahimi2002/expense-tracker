@@ -27,9 +27,10 @@ export interface IncomeTransaction {
   _id: string;
   amount: number;
   date: string;
+  icon?: string;
   description?: string;
   category?: string;
-  source?:string;
+  source?: string;
   type: "income";
 }
 
