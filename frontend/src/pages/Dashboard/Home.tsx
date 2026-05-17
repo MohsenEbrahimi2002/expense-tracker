@@ -13,15 +13,14 @@ import RecentTransactions from "../../components/Dashboard/RecentTransactions";
 import FinanceOverview from "../../components/Dashboard/FinanceOverview";
 import ExpenseTransaction from "../../components/Dashboard/ExpenseTransaction";
 import Last30DaysExpenses from "../../components/Dashboard/Last30DaysExpenses";
+import RecentIncomeWithChart from "../../components/Dashboard/RecentIncomeWithChart";
 
 function Home() {
   useUserAuth();
   const navigate = useNavigate();
 
   const [loading, setLoading] = useState(false);
-  const [dashboardData, setDashboardData] = useState<DashboardDataType | null>(
-    null
-  );
+  const [dashboardData, setDashboardData] = useState<DashboardDataType | null>(null);
 
   const fetchDashboardData = async () => {
     if (loading) return;
@@ -31,6 +30,7 @@ function Home() {
         `${API_PATHS.DASHBOARD.GET_DATA}`,
       );
       if (response.data) {
+          console.log("last60DaysIncome:", response.data);
         setDashboardData(response.data);
      
       }
@@ -84,6 +84,10 @@ function Home() {
           />
           <Last30DaysExpenses
           data={dashboardData?.last30DaysExpenses.transactions || []}
+          />
+          <RecentIncomeWithChart
+          data={dashboardData?.last60DaysIncome?.transactions?.slice(0,4) || []}
+          totalIncome={dashboardData?.totalIncome || 0}
           />
 
         </div>

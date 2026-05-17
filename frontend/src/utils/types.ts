@@ -23,12 +23,13 @@ export interface ExpenseTransactionType {
   type: "expense";
 }
 
-interface IncomeTransaction {
+export interface IncomeTransaction {
   _id: string;
   amount: number;
   date: string;
   description?: string;
   category?: string;
+  source?:string;
   type: "income";
 }
 
