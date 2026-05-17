@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
 import type { ExpenseTransactionType } from "../../utils/types";
+import { prepareExpenseBarChartData } from "../../utils/helper";
 
 type Last30DaysExpensesProps = {
   data: ExpenseTransactionType[];
 };
+type ChartDataType = {
+  category: string | undefined;
+  amount: number;
+};
 
 function Last30DaysExpenses({ data }: Last30DaysExpensesProps) {
-  const [chartData, setChartData] = useState([]);
+  const [chartData, setChartData] = useState<ChartDataType[]>([]);
 
   useEffect(() => {
     const result = prepareExpenseBarChartData(data);

@@ -21,4 +21,5 @@ export const prepareExpenseBarChartData = (data: ExpenseTransactionType[]) => {
     category: item.category,
     amount: item.amount,
   }));
+  return chartData;
 };
