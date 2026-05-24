@@ -5,6 +5,7 @@ import { API_PATHS } from "../../utils/apiPath";
 import IncomeOverview from "../../components/Income/IncomeOverview";
 import type { IncomeType } from "../../utils/types";
 import Modal from "../../components/Modal";
+import AddIncomeForm from "../../components/Income/AddIncomeForm";
 
 function Income() {
   const [openAddIncomeModal, setOpenAddIncomeModal] = useState(false);
