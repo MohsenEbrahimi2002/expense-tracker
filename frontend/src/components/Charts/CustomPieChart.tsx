@@ -10,7 +10,7 @@ import CustomTooltip from "./CustomTooltip";
 import CustomLegend from "./CustomLegend";
 
 type CustomPieChartProps = {
-  showTextAnchor: any;
+  showTextAnchor?: boolean;
   colors: string[];
   totalAmount: string;
   label: string;

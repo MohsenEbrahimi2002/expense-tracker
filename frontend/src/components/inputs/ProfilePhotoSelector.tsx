@@ -5,14 +5,14 @@ function ProfilePhotoSelector({
   profilePic,
   setProfilePic,
 }: {
-  profilePic: string;
-  setProfilePic: (pic: string) => void;
+  profilePic: File | null;
+  setProfilePic: (pic: File | null) => void;
 }) {
-  const inputRef = useRef<any>(null);
-  const [previewUrl, setPreviewUrl] = useState<any>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement> | any) => {
-    const file = e.target.files[0];
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
     if (file) {
       //Update image
       setProfilePic(file);
@@ -24,12 +24,12 @@ function ProfilePhotoSelector({
   };
 
   const handleRemoveImage = () => {
-    setProfilePic("");
+    setProfilePic(null);
     setPreviewUrl(null);
   };
 
   const onChooseFile = () => {
-    inputRef.current.click();
+    inputRef.current?.click();
   };
 
   return (
@@ -50,7 +50,7 @@ function ProfilePhotoSelector({
         </div>
       ) : (
         <div className="relative">
-          <img src={previewUrl} alt="profile photo" className="w-20 h-20 rounded-full object-cover" />
+          <img src={previewUrl || ""} alt="profile photo" className="w-20 h-20 rounded-full object-cover" />
           <button type="button" onClick={handleRemoveImage} className="w-8 h-8 flex items-center justify-center bg-red-500 text-white rounded-full absolute -bottom-1 -right-1">
             <LuTrash />
           </button>

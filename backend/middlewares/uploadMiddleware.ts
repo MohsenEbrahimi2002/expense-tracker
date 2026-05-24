@@ -12,12 +12,12 @@ const storage = multer.diskStorage({
 });
 
 // File filter
-const fileFilter = (req: Request, file: Express.Multer.File, cb: any) => {
+const fileFilter = (req: Request, file: Express.Multer.File, cb:  multer.FileFilterCallback) => {
   const allowedTypes = ["image/jpeg", "image/png", "image/jpg"];
   if (allowedTypes.includes(file.mimetype)) {
     cb(null, true);
   } else {
-    cb(new Error("Only .jpeg .jpg and .png formats are allowed"), false);
+    cb(new Error("Only .jpeg .jpg and .png formats are allowed") as never, false);
   }
 };
 

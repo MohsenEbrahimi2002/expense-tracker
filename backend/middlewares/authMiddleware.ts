@@ -1,10 +1,11 @@
 import jwt from "jsonwebtoken";
 import User, { type UserType } from "../models/User.ts";
 import type { NextFunction, Request, Response } from "express";
+import type mongoose from "mongoose";
 
 export interface AuthRequest extends Request {
   user: {
-    _id: string;
+    _id: mongoose.Types.ObjectId;
     fullName: string;
     email: string;
   };
@@ -29,7 +30,7 @@ export const protect = async (
         .json({ message: "Not authorized, user not found" });
     }
 
-    (req as any).user = user;
+    (req as AuthRequest).user = user;
 
     next();
   } catch (err) {
