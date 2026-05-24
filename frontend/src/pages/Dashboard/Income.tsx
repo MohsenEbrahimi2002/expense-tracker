@@ -6,7 +6,13 @@ import IncomeOverview from "../../components/Income/IncomeOverview";
 import type { IncomeType } from "../../utils/types";
 import Modal from "../../components/Modal";
 import AddIncomeForm from "../../components/Income/AddIncomeForm";
-
+import toast from "react-hot-toast";
+type AddIncomePayload = {
+  source: string;
+  amount: string;
+  date: string;
+  icon: string;
+};
 function Income() {
   const [openAddIncomeModal, setOpenAddIncomeModal] = useState(false);
   const [incomeData, setIncomeData] = useState<IncomeType[]>([]);
@@ -30,16 +36,47 @@ function Income() {
       }
     } catch (err) {
       console.log("Something went wrong in income page. Please try again", err);
+      setIncomeData([]);
     } finally {
       setLoading(false);
     }
   };
 
   // Handle Add Income
-  const handleAddIncome = async (income) => {};
+  const handleAddIncome = async (income: AddIncomePayload) => {
+    const { source, amount, date, icon } = income;
+    if (!source.trim()) {
+      toast.error("Source is required.");
+      return;
+    }
+
+    if (!amount || isNaN(Number(amount)) || Number(amount) <= 0) {
+      toast.error("Amount should be a valid number greater than 0.");
+      return;
+    }
+
+    if (!date) {
+      toast.error("Date is required.");
+      return;
+    }
+
+    try {
+      await axiosInstance.post(API_PATHS.INCOME.ADD_INCOME, {
+        source,
+        amount: Number(amount),
+        date,
+        icon: icon || "💰",
+      });
+      setOpenAddIncomeModal(false);
+      toast.success("Income added successfully!");
+      fetchIncomeDetails();
+    } catch (err) {
+      console.error("Error adding income");
+    }
+  };
 
   // Delete Income
-  const deleteIncome = async (id) => {};
+  const deleteIncome = async (id: string) => {};
 
   // handle download income details
   const handleDownloadIncomeDetails = async () => {};

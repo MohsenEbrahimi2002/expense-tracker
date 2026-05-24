@@ -1,8 +1,12 @@
 import { useState } from "react";
 import Input from "../Inputs/Input";
+import EmojiPickerPopup from "../EmojiPickerPopup";
+import type { IncomeType } from "../../utils/types";
+
+type IncomeT = { source: string; amount: string; date: string; icon: string };
 
 type AddIncomeFormProps = {
-  onAddIncome: () => void;
+  onAddIncome: (income: IncomeType) => void;
 };
 
 function AddIncomeForm({ onAddIncome }: AddIncomeFormProps) {
@@ -12,13 +16,14 @@ function AddIncomeForm({ onAddIncome }: AddIncomeFormProps) {
     date: "",
     icon: "",
   });
-  const handleChange = (key, value) => setIncome({ ...income, [key]: value });
+  const handleChange = (key: string, value: string) =>
+    setIncome({ ...income, [key]: value });
   return (
     <div>
-        <EmojiPickerPopup 
+      <EmojiPickerPopup
         icon={income.icon}
-        onSelect={(selectedIcon) => handleChange("icon",selectedIcon) }
-        />
+        onSelect={(selectedIcon) => handleChange("icon", selectedIcon)}
+      />
 
       <Input
         value={income.source}
@@ -44,7 +49,11 @@ function AddIncomeForm({ onAddIncome }: AddIncomeFormProps) {
         type="date"
       />
       <div className="flex justify-end mt-6">
-        <button type="button" onClick={() => onAddIncome(income)} className="add-btn add-btn-fill">
+        <button
+          type="button"
+          onClick={() => onAddIncome(income)}
+          className="add-btn add-btn-fill"
+        >
           Add Income
         </button>
       </div>
