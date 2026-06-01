@@ -12,6 +12,7 @@ type TransactionInfoCardProps = {
   icon?: string;
   date: string;
   amount: number;
+  onDelete: () => void;
   type: "income" | "expense";
 };
 
@@ -22,13 +23,14 @@ function TransactionInfoCard({
   icon,
   title,
   type,
+  onDelete,
 }: TransactionInfoCardProps) {
   const getAmountStyles = () =>
     type === "income" ? "bg-green-50 text-green-500" : "bg-red-50 text-red-500";
   return (
     <div className="group relative flex items-center gap-4 mt-2 p-3 rounded-lg hover:bg-gray-100/60">
       <div className="w-12 h-12 flex items-center justify-center text-xl text-gray-800 bg-gray-100 rounded-full">
-        {icon ? <img alt={title} className="w-6 h-6"></img> : <LuUtensils />}
+        {icon ? <img alt={title} src={icon} className="w-6 h-6"></img> : <LuUtensils  />}
       </div>
 
       <div className="flex-1 flex items-center justify-between">

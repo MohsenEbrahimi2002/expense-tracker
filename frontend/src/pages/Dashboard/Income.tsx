@@ -7,7 +7,8 @@ import type { IncomeType } from "../../utils/types";
 import Modal from "../../components/Modal";
 import AddIncomeForm from "../../components/Income/AddIncomeForm";
 import toast from "react-hot-toast";
-type AddIncomePayload = {
+import IncomeList from "../../components/Income/IncomeList";
+export type AddIncomePayload = {
   source: string;
   amount: string;
   date: string;
@@ -19,7 +20,7 @@ function Income() {
   const [loading, setLoading] = useState(false);
   const [openDeleteAlert, setOpenDeleteAlert] = useState({
     show: false,
-    data: null,
+    data: "",
   });
 
   // Get All Income Details
@@ -65,11 +66,12 @@ function Income() {
         source,
         amount: Number(amount),
         date,
-        icon: icon || "💰",
+        icon: icon ,
       });
       setOpenAddIncomeModal(false);
       toast.success("Income added successfully!");
       fetchIncomeDetails();
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       console.error("Error adding income");
     }
@@ -97,6 +99,11 @@ function Income() {
               onAddIncome={() => setOpenAddIncomeModal(true)}
             />
           </div>
+          <IncomeList
+            transactions={incomeData}
+            onDelete={(id) => setOpenDeleteAlert({ data: id, show: true })}
+            onDownload={handleDownloadIncomeDetails}
+          />
         </div>
         <Modal
           isOpen={openAddIncomeModal}

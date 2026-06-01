@@ -1,12 +1,11 @@
 import { useState } from "react";
 import Input from "../Inputs/Input";
 import EmojiPickerPopup from "../EmojiPickerPopup";
-import type { IncomeType } from "../../utils/types";
+import type { AddIncomePayload } from "../../pages/Dashboard/Income";
 
-type IncomeT = { source: string; amount: string; date: string; icon: string };
 
 type AddIncomeFormProps = {
-  onAddIncome: (income: IncomeType) => void;
+  onAddIncome: (income: AddIncomePayload) => void;
 };
 
 function AddIncomeForm({ onAddIncome }: AddIncomeFormProps) {
