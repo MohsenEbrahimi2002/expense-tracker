@@ -13,15 +13,16 @@ export const useUserAuth = () => {
 
     const fetchUserInfo = async () => {
       try {
+        console.log("fetching user...");
         const response = await axiosInstance.get(API_PATHS.AUTH.GET_USER_INFO);
         if (isMounted && response.data) {
-          updateUser(response.data);
+          updateUser(response.data.user);
         }
       } catch (err) {
         console.error("Failed to fetch user info:", err);
         if (isMounted) {
           clearUser();
-          navigate("login");
+          navigate("/login");
         }
       }
     };
@@ -29,5 +30,5 @@ export const useUserAuth = () => {
     return () => {
       isMounted = false;
     };
-  }, [updateUser, clearUser, navigate]);
+  }, [user, updateUser, clearUser, navigate]);
 };

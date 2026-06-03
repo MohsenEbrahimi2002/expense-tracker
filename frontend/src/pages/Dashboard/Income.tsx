@@ -9,6 +9,7 @@ import AddIncomeForm from "../../components/Income/AddIncomeForm";
 import toast from "react-hot-toast";
 import IncomeList from "../../components/Income/IncomeList";
 import DeleteAlert from "../../components/DeleteAlert";
+import { useUserAuth } from "../../hooks/useUserAuth";
 export type AddIncomePayload = {
   source: string;
   amount: string;
@@ -23,6 +24,7 @@ function Income() {
     show: false,
     data: "",
   });
+  useUserAuth();
 
   // Get All Income Details
   const fetchIncomeDetails = async () => {
@@ -79,7 +81,16 @@ function Income() {
   };
 
   // Delete Income
-  const deleteIncome = async (id: string) => {};
+  const deleteIncome = async (id: string) => {
+    try {
+      await axiosInstance.delete(API_PATHS.INCOME.DELETE_INCOME(id));
+      setOpenDeleteAlert({ show: false, data: "" });
+      toast.success("Income details deleted successfully");
+      fetchIncomeDetails();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   // handle download income details
   const handleDownloadIncomeDetails = async () => {};
@@ -119,8 +130,8 @@ function Income() {
           title="Delete Income"
         >
           <DeleteAlert
-          content="Are you sure you want to delete this income?"
-          onDelete={()=> deleteIncome(openDeleteAlert.data)}
+            content="Are you sure you want to delete this income?"
+            onDelete={() => deleteIncome(openDeleteAlert.data)}
           />
         </Modal>
       </div>
