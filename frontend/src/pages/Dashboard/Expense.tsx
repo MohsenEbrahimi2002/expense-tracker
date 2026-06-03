@@ -1,8 +1,82 @@
+import { useEffect, useState } from "react";
+import DashboardLayout from "../../components/layout/DashboardLayout";
+import { useUserAuth } from "../../hooks/useUserAuth";
+import axiosInstance from "../../utils/axiosInstance";
+import { API_PATHS } from "../../utils/apiPath";
+import toast from "react-hot-toast";
+import type { ExpenseType } from "../../utils/types";
 
 function Expense() {
+  const [openAddExpenseModal, setOpenAddExpenseModal] = useState(false);
+  const [expenseData, setExpenseData] = useState<ExpenseType[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [openDeleteAlert, setOpenDeleteAlert] = useState({
+    show: false,
+    data: "",
+  });
+  useUserAuth();
+  // Get All Expense Details
+  const fetchExpenseDetails = async () => {
+    if (loading) return;
+
+    setLoading(true);
+    try {
+      const response = await axiosInstance.get(
+        `${API_PATHS.EXPENSE.GET_ALL_EXPENSE}`,
+      );
+      if (response) {
+        setExpenseData(response.data);
+      }
+    } catch (err) {
+      console.log("Something went wrong in income page. Please try again", err);
+      setExpenseData([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Handle Add Expense
+  const handleAddExpense = async (expense: AddExpensePayload) => {
+    const { category, amount, date, icon } = expense;
+    if (!category.trim()) {
+      toast.error("Category is required.");
+      return;
+    }
+
+    if (!amount || isNaN(Number(amount)) || Number(amount) <= 0) {
+      toast.error("Amount should be a valid number greater than 0.");
+      return;
+    }
+
+    if (!date) {
+      toast.error("Date is required.");
+      return;
+    }
+
+    try {
+      await axiosInstance.post(API_PATHS.EXPENSE.ADD_EXPENSE, {
+        category,
+        amount: Number(amount),
+        date,
+        icon: icon,
+      });
+      setOpenAddExpenseModal(false);
+      toast.success("Expense added successfully!");
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    } catch (err) {
+      console.error("Error adding income");
+    }
+  };
+  useEffect(() => {
+    fetchExpenseDetails();
+
+    return () => {};
+  }, []);
   return (
-    <div>Expense</div>
-  )
+    <DashboardLayout activeMenu="Expense">
+      <div className="my-5 mx-auto"></div>
+    </DashboardLayout>
+  );
 }
 
-export default Expense
+export default Expense;

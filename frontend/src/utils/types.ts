@@ -56,3 +56,14 @@ export interface IncomeType {
     __v?: number;
 }
 
+export interface ExpenseType {
+  _id: string
+  userId: string
+  icon: string
+  category: string
+  amount: number
+  date: string
+  createdAt: string
+  updatedAt: string
+  __v: number
+}
