@@ -8,6 +8,7 @@ import Modal from "../../components/Modal";
 import AddIncomeForm from "../../components/Income/AddIncomeForm";
 import toast from "react-hot-toast";
 import IncomeList from "../../components/Income/IncomeList";
+import DeleteAlert from "../../components/DeleteAlert";
 export type AddIncomePayload = {
   source: string;
   amount: string;
@@ -66,7 +67,7 @@ function Income() {
         source,
         amount: Number(amount),
         date,
-        icon: icon ,
+        icon: icon,
       });
       setOpenAddIncomeModal(false);
       toast.success("Income added successfully!");
@@ -111,6 +112,16 @@ function Income() {
           title="Add Income"
         >
           <AddIncomeForm onAddIncome={handleAddIncome} />
+        </Modal>
+        <Modal
+          isOpen={openDeleteAlert.show}
+          onClose={() => setOpenDeleteAlert({ data: "", show: false })}
+          title="Delete Income"
+        >
+          <DeleteAlert
+          content="Are you sure you want to delete this income?"
+          onDelete={()=> deleteIncome(openDeleteAlert.data)}
+          />
         </Modal>
       </div>
     </DashboardLayout>
