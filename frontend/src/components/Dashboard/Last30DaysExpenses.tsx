@@ -16,6 +16,7 @@ function Last30DaysExpenses({ data }: Last30DaysExpensesProps) {
 
   useEffect(() => {
     const result = prepareExpenseBarChartData(data);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setChartData(result);
 
     return () => {};

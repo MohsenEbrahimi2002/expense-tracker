@@ -25,6 +25,7 @@ function RecentIncomeWithChart({data,totalIncome}: RecentIncomeWithChartProps) {
     };
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         prepareChartData();
     }, [data]);
 

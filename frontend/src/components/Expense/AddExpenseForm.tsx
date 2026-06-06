@@ -13,7 +13,7 @@ function AddExpenseForm({ onAddExpense }: AddExpenseFormProps) {
     date: "",
     icon: "",
   });
-  const handleChange = (key, value) => setExpense({ ...expense, [key]: value });
+  const handleChange = (key: string, value: string) => setExpense({ ...expense, [key]: value });
   return (
     <div>
       <EmojiPickerPopup

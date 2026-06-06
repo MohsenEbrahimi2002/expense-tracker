@@ -12,27 +12,41 @@ import type { ChartDataType } from "../Expense/ExpenseOverview";
 type CustomLineChartProps = {
   data: ChartDataType[];
 };
+type CustomTooltipProps = {
+  active?: boolean;
+  payload?: Array<{
+    payload: ChartDataType;
+    dataKey: string;
+    name: string;
+    value: number;
+    color: string;
+    fill: string;
+    stroke: string;
+    strokeWidth: number;
+  }>;
+  label?: string;
+};
 
+const CustomTooltip = ({ active, payload }: CustomTooltipProps) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="bg-white shadow-md rounded-lg p-2 border border-gray-300">
+        <p className="text-xs font-semibold text-purple-800 mb-1">
+          {payload[0].payload.category}
+        </p>
+        <p className="text-sm text-gray-600">
+          Amount:{" "}
+          <span className="text-sm font-medium text-gray-900">
+            ${payload[0].payload.amount}
+          </span>
+        </p>
+      </div>
+    );
+  }
+
+  return null;
+};
 function CustomLineChart({ data }: CustomLineChartProps) {
-  const CustomTooltip = ({ active, payload }) => {
-    if (active && payload && payload.length) {
-      return (
-        <div className="bg-white shadow-md rounded-lg p-2 border border-gray-300">
-          <p className="text-xs font-semibold text-purple-800 mb-1">
-            {payload[0].payload.category}
-          </p>
-          <p className="text-sm text-gray-600">
-            Amount:{" "}
-            <span className="text-sm font-medium text-gray-900">
-              ${payload[0].payload.amount}
-            </span>
-          </p>
-        </div>
-      );
-    }
-
-    return null;
-  };
   return (
     <div className="bg-white">
       <ResponsiveContainer width="100%" height={300}>
