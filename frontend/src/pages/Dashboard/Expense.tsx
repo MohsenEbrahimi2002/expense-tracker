@@ -74,6 +74,7 @@ function Expense() {
       });
       setOpenAddExpenseModal(false);
       toast.success("Expense added successfully!");
+      fetchExpenseDetails();
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       console.error("Error adding income");
