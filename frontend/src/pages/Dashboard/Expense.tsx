@@ -5,6 +5,14 @@ import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPath";
 import toast from "react-hot-toast";
 import type { ExpenseType } from "../../utils/types";
+import ExpenseOverview from "../../components/Expense/ExpenseOverview";
+
+export type AddExpensePayload = {
+  category: string;
+  amount: string;
+  date: string;
+  icon: string;
+};
 
 function Expense() {
   const [openAddExpenseModal, setOpenAddExpenseModal] = useState(false);
@@ -74,7 +82,16 @@ function Expense() {
   }, []);
   return (
     <DashboardLayout activeMenu="Expense">
-      <div className="my-5 mx-auto"></div>
+      <div className="my-5 mx-auto">
+        <div className="grid grid-cols-1 gap-6">
+          <div className="">
+            <ExpenseOverview
+              transactions={expenseData}
+              onExpenseIncome={() => setOpenAddExpenseModal(true)}
+            />
+          </div>
+        </div>
+      </div>
     </DashboardLayout>
   );
 }
