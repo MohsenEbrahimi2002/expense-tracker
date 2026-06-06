@@ -1,9 +1,10 @@
 import { useState } from "react";
 import EmojiPickerPopup from "../EmojiPickerPopup";
 import Input from "../Inputs/Input";
+import type { AddExpensePayload } from "../../pages/Dashboard/Expense";
 
 type AddExpenseFormProps = {
-  onAddExpense: () => void;
+  onAddExpense: (expense: AddExpensePayload) => void;
 };
 
 function AddExpenseForm({ onAddExpense }: AddExpenseFormProps) {
@@ -13,7 +14,8 @@ function AddExpenseForm({ onAddExpense }: AddExpenseFormProps) {
     date: "",
     icon: "",
   });
-  const handleChange = (key: string, value: string) => setExpense({ ...expense, [key]: value });
+  const handleChange = (key: string, value: string) =>
+    setExpense({ ...expense, [key]: value });
   return (
     <div>
       <EmojiPickerPopup
