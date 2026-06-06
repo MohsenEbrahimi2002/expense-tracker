@@ -12,7 +12,7 @@ type TransactionInfoCardProps = {
   icon?: string;
   date: string;
   amount: number;
-  onDelete: () => void;
+  onDelete?: () => void;
   type: "income" | "expense";
 };
 
