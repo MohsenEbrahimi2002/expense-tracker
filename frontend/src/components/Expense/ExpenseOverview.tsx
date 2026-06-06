@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import type { ExpenseType } from "../../utils/types";
 import { prepareExpenseLineChartData } from "../../utils/helper";
 import { LuPlus } from "react-icons/lu";
+import CustomLineChart from "../Charts/CustomLineChart";
 
 type ExpenseOverviewProps = {
   transactions: ExpenseType[];
   onExpenseIncome: () => void;
 };
-type ChartDataType = {
+export type ChartDataType = {
   month: string;
   amount: number;
   category: string;
@@ -48,7 +49,7 @@ function ExpenseOverview({
       <div className="mt-10">
         <CustomLineChart data={chartData} />
       </div>
-    </div>
+    </div> 
   );
 }
 

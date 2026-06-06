@@ -6,7 +6,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
   Cell,
 } from "recharts";
@@ -52,7 +51,7 @@ function CustomBarChart({ data }: CustomBarChartProps) {
   };
   const getDataKey = () => {
     if (data && data.length > 0) {
-      return data[0].hasOwnProperty("source") ? "source" : "category";
+      return Object.prototype.hasOwnProperty.call(data[0], "source") ? "source" : "category";
     }
     return "category";
   };

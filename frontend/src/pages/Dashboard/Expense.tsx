@@ -6,6 +6,8 @@ import { API_PATHS } from "../../utils/apiPath";
 import toast from "react-hot-toast";
 import type { ExpenseType } from "../../utils/types";
 import ExpenseOverview from "../../components/Expense/ExpenseOverview";
+import Modal from "../../components/Modal";
+import AddExpenseForm from "../../components/Expense/AddExpenseForm";
 
 export type AddExpensePayload = {
   category: string;
@@ -91,6 +93,13 @@ function Expense() {
             />
           </div>
         </div>
+        <Modal
+          isOpen={openAddExpenseModal}
+          onClose={() => setOpenAddExpenseModal(false)}
+          title="Add Expense"
+        >
+          <AddExpenseForm onAddExpense={handleAddExpense} />
+        </Modal>
       </div>
     </DashboardLayout>
   );
