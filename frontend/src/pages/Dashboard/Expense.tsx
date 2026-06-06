@@ -8,6 +8,8 @@ import type { ExpenseType } from "../../utils/types";
 import ExpenseOverview from "../../components/Expense/ExpenseOverview";
 import Modal from "../../components/Modal";
 import AddExpenseForm from "../../components/Expense/AddExpenseForm";
+import ExpenseList from "../../components/Expense/ExpenseList";
+import DeleteAlert from "../../components/DeleteAlert";
 
 export type AddExpensePayload = {
   category: string;
@@ -78,7 +80,7 @@ function Expense() {
     }
   };
 
-   // Delete Expense
+  // Delete Expense
   const deleteExpense = async (id: string) => {
     try {
       await axiosInstance.delete(API_PATHS.EXPENSE.DELETE_EXPENSE(id));
@@ -109,7 +111,7 @@ function Expense() {
           </div>
           <ExpenseList
             transactions={expenseData}
-            onDelete={(id) => {
+            onDelete={(id: string) => {
               setOpenDeleteAlert({ show: true, data: id });
             }}
             onDownload={handleDownloadExpenseDetails}
@@ -121,6 +123,16 @@ function Expense() {
           title="Add Expense"
         >
           <AddExpenseForm onAddExpense={handleAddExpense} />
+        </Modal>
+        <Modal
+          isOpen={openDeleteAlert.show}
+          onClose={() => setOpenDeleteAlert({ data: "", show: false })}
+          title="Delete Expense"
+        >
+          <DeleteAlert
+            content="Are you sure you want to delete this expense?"
+            onDelete={() => deleteExpense(openDeleteAlert.data)}
+          />
         </Modal>
       </div>
     </DashboardLayout>
