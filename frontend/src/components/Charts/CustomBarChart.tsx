@@ -71,8 +71,8 @@ function CustomBarChart({ data }: CustomBarChartProps) {
             dataKey="amount"
             fill="#FF8042"
             activeBar={{
-              fill: "green",
-              stroke: "yellow",
+              fill: "#cfbefb",
+              stroke: "875cf5",
               strokeWidth: 1,
             }}
             radius={[10, 10, 0, 0]}
