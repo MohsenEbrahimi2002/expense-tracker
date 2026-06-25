@@ -1,7 +1,7 @@
 import { useState } from "react";
 import EmojiPickerPopup from "../EmojiPickerPopup";
-import Input from "../Inputs/Input";
 import type { AddExpensePayload } from "../../pages/Dashboard/Expense";
+import Input from "../Inputs/Input";
 
 type AddExpenseFormProps = {
   onAddExpense: (expense: AddExpensePayload) => void;
@@ -24,21 +24,27 @@ function AddExpenseForm({ onAddExpense }: AddExpenseFormProps) {
       />
       <Input
         value={expense.category}
-        onChange={(e) => handleChange("category", e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement, HTMLInputElement>) =>
+          handleChange("category", e.target.value)
+        }
         label="Category"
         placeholder="Rent,Groceries, etc"
         type="text"
       />
       <Input
         value={expense.amount}
-        onChange={(e) => handleChange("amount", e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement, HTMLInputElement>) =>
+          handleChange("amount", e.target.value)
+        }
         label="Amount"
         placeholder=""
         type="number"
       />
       <Input
         value={expense.date}
-        onChange={(e) => handleChange("date", e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement, HTMLInputElement>) =>
+          handleChange("date", e.target.value)
+        }
         label="Date"
         placeholder=""
         type="date"
