@@ -1,14 +1,14 @@
 import AuthLayout from "../../components/layout/AuthLayout";
-import Input from "../../components/Inputs/Input";
 import { Link, useNavigate } from "react-router";
 import { validateEmail } from "../../utils/helper";
 import { useContext, useState } from "react";
-import ProfilePhotoSelector from "../../components/Inputs/ProfilePhotoSelector";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPath";
 import { UserContext } from "../../context/UserContext";
 import type { AxiosError } from "axios";
 import uploadImage from "../../utils/uploadImage";
+import ProfilePhotoSelector from "../../components/Inputs/ProfilePhotoSelector";
+import Input from "../../components/Inputs/Input";
 
 function SignUp() {
   const [profilePic, setProfilePic] = useState<File | null>(null);
@@ -85,13 +85,13 @@ function SignUp() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <Input
               value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement, HTMLInputElement>) => setFullName(e.target.value)}
               label="Full Name"
               placeholder="Enter your full name"
             />
             <Input
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e:React.ChangeEvent<HTMLInputElement, HTMLInputElement>) => setEmail(e.target.value)}
               placeholder="john@example.com"
               label="Email Adress"
               type="email"
@@ -99,7 +99,7 @@ function SignUp() {
             <div className="col-span-2">
               <Input
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e:React.ChangeEvent<HTMLInputElement, HTMLInputElement>) => setPassword(e.target.value)}
                 placeholder="Minimum 8 characters"
                 label="Password"
                 type="password"

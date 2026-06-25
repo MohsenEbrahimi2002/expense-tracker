@@ -1,7 +1,7 @@
 import { useState } from "react";
-import Input from "../Inputs/Input";
 import EmojiPickerPopup from "../EmojiPickerPopup";
 import type { AddIncomePayload } from "../../pages/Dashboard/Income";
+import Input from "../Inputs/Input";
 
 
 type AddIncomeFormProps = {
@@ -26,7 +26,7 @@ function AddIncomeForm({ onAddIncome }: AddIncomeFormProps) {
 
       <Input
         value={income.source}
-        onChange={(e) => handleChange("source", e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement, HTMLInputElement>) => handleChange("source", e.target.value)}
         label="Income Source"
         placeholder="Freelance, Salary, etc"
         type="text"
@@ -34,7 +34,7 @@ function AddIncomeForm({ onAddIncome }: AddIncomeFormProps) {
 
       <Input
         value={income.amount}
-        onChange={(e) => handleChange("amount", e.target.value)}
+        onChange={(e:React.ChangeEvent<HTMLInputElement, HTMLInputElement>) => handleChange("amount", e.target.value)}
         label="Amount"
         placeholder=""
         type="number"
@@ -42,7 +42,7 @@ function AddIncomeForm({ onAddIncome }: AddIncomeFormProps) {
 
       <Input
         value={income.date}
-        onChange={(e) => handleChange("date", e.target.value)}
+        onChange={(e:React.ChangeEvent<HTMLInputElement, HTMLInputElement>) => handleChange("date", e.target.value)}
         label="Date"
         placeholder=""
         type="date"

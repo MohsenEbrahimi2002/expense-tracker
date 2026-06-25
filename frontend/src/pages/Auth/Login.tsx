@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
 import AuthLayout from "../../components/layout/AuthLayout";
-import Input from "../../components/Inputs/Input";
 import { Link, useNavigate } from "react-router";
 import { validateEmail } from "../../utils/helper";
 import axiosInstance from "../../utils/axiosInstance";
 import { API_PATHS } from "../../utils/apiPath";
 import type { AxiosError } from "axios";
 import { UserContext, type UserType } from "../../context/UserContext";
+import Input from "../../components/Inputs/Input";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -64,14 +64,14 @@ function Login() {
         <form onSubmit={handleLogin}>
           <Input
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e:React.ChangeEvent<HTMLInputElement, HTMLInputElement>) => setEmail(e.target.value)}
             placeholder="john@example.com"
             label="Email Adress"
             type="email"
           />
           <Input
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e:React.ChangeEvent<HTMLInputElement, HTMLInputElement>) => setPassword(e.target.value)}
             placeholder="Minimum 8 characters"
             label="Password"
             type="password"
