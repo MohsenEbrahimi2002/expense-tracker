@@ -1,4 +1,4 @@
-export const BASE_URL = "expense-tracker-production-a36e.up.railway.app";
+export const BASE_URL = "https://expense-tracker-production-a36e.up.railway.app";
 
 // utils/apiPaths.js
 export const API_PATHS = {
