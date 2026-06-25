@@ -1,6 +1,6 @@
 import type { Request, Response } from "express";
-import Expense from "../models/Expense.ts";
-import type { AuthRequest } from "../middlewares/authMiddleware.ts";
+import Expense from "../models/Expense.js";
+import type { AuthRequest } from "../middlewares/authMiddleware.js";
 import xlsx from "xlsx";
 
 export const addExpense = async (req: Request, res: Response) => {

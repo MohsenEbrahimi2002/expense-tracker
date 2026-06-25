@@ -2,11 +2,11 @@ import express, { type Request, type Response } from "express";
 import cors from "cors";
 import path from "path";
 import dotenv from "dotenv";
-import { connectDB } from "./config/db.ts";
-import authRoutes from "./routes/authRoutes.ts";
-import incomeRoutes from "./routes/incomeRoutes.ts"
-import expenseRoutes from "./routes/expenseRoutes.ts"
-import dashboardRoutes from "./routes/dashboardRoutes.ts"
+import { connectDB } from "./config/db.js";
+import authRoutes from "./routes/authRoutes.js";
+import incomeRoutes from "./routes/incomeRoutes.js"
+import expenseRoutes from "./routes/expenseRoutes.js"
+import dashboardRoutes from "./routes/dashboardRoutes.js"
 
 dotenv.config();
 

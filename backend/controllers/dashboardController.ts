@@ -1,5 +1,5 @@
-import Income from "../models/Income.ts";
-import Expense from "../models/Expense.ts";
+import Income from "../models/Income.js";
+import Expense from "../models/Expense.js";
 import { isValidObjectId, Types } from "mongoose";
 import type { Request, Response } from "express";
 import type { AuthRequest } from "../middlewares/authMiddleware.ts";

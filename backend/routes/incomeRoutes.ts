@@ -1,11 +1,11 @@
 import express from "express";
-import { protect } from "../middlewares/authMiddleware.ts";
+import { protect } from "../middlewares/authMiddleware.js";
 import {
   addIncome,
   deleteIncome,
   downloadIncomeExcel,
   getAllIncome,
-} from "../controllers/incomeController.ts";
+} from "../controllers/incomeController.js";
 
 const router = express.Router();
 

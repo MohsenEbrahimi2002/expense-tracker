@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import Income from "../models/Income.ts";
+import Income from "../models/Income.js";
 import type { AuthRequest } from "../middlewares/authMiddleware.ts";
 import xlsx from "xlsx";
 

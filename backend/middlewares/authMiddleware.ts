@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import User, { type UserType } from "../models/User.ts";
+import User, { type UserType } from "../models/User.js";
 import type { NextFunction, Request, Response } from "express";
 import type mongoose from "mongoose";
 

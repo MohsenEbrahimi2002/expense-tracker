@@ -1,8 +1,8 @@
 import jwt from "jsonwebtoken";
-import User from "../models/User.ts";
+import User from "../models/User.js";
 import { type Request, type Response } from "express";
 import mongoose from "mongoose";
-import type { AuthRequest } from "../middlewares/authMiddleware.ts";
+import type { AuthRequest } from "../middlewares/authMiddleware.js";
 
 // Generate JWT token
 const generateToken = (id: mongoose.Types.ObjectId) => {
