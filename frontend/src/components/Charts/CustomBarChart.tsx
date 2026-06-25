@@ -1,4 +1,3 @@
-import type { ChartDataType } from "../Dashboard/Last30DaysExpenses";
 import {
   BarChart,
   Bar,
@@ -9,10 +8,16 @@ import {
   ResponsiveContainer,
   Cell,
 } from "recharts";
-import type { IncomeChartDataType } from "../Income/IncomeOverview";
+
+type BarChartData = {
+  amount: number;
+  category?: string;
+  source?: string;
+  month?: string;
+};
 
 type CustomBarChartProps = {
-  data: ChartDataType[] | IncomeChartDataType[];
+  data: BarChartData[];
 };
 
 function CustomBarChart({ data }: CustomBarChartProps) {
@@ -23,15 +28,8 @@ function CustomBarChart({ data }: CustomBarChartProps) {
   const CustomTooltip = ({
     active,
     payload,
-  }: {
-    active?: boolean;
-    payload?: ReadonlyArray<{
-      payload: {
-        category: string;
-        amount: number;
-      };
-    }>;
-  }) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  }: any) => {
     if (active && payload && payload.length) {
       return (
         <div className="bg-white shadow-md rounded-lg p-2 border border-gray-300">

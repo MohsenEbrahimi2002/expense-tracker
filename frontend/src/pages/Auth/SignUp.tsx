@@ -11,7 +11,7 @@ import type { AxiosError } from "axios";
 import uploadImage from "../../utils/uploadImage";
 
 function SignUp() {
-  const [profilePic, setProfilePic] = useState<string>("");
+  const [profilePic, setProfilePic] = useState<File | null>(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
